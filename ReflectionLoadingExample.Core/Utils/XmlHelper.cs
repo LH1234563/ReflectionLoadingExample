@@ -9,13 +9,13 @@ public class XmlHelper
     public static void LoadMoudleList()
     {
         MoudleList = new List<MoudleEntity>();
-        var doc = XDocument.Load("MoudlesConfig.xml");
+        var doc = XDocument.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MoudlesConfig.xml"));
         foreach (var element in doc.Descendants("Module"))
         {
             try
             {
                 var isShow = bool.Parse(element.Attribute("IsShow").Value);
-                var moduleName =element.Attribute("ModuleName").Value;
+                var moduleName = element.Attribute("ModuleName").Value;
                 var viewModelType = ModuleHelper.GetModuleType(moduleName);
                 if (isShow && viewModelType != null)
                 {
@@ -32,16 +32,17 @@ public class XmlHelper
             }
         }
     }
+
     public static void LoadConfig()
     {
-        var doc = XDocument.Load("MoudlesConfig.xml");
+        var doc = XDocument.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MoudlesConfig.xml"));
         foreach (var element in doc.Descendants("Config"))
         {
             try
             {
                 Config.ShowScreen = bool.Parse(element.Attribute("ShowScreen").Value);
-                Config.DefaultName =element.Attribute("DefaultName").Value;
-                Config.DefaultSex =element.Attribute("DefaultSex").Value;
+                Config.DefaultName = element.Attribute("DefaultName").Value;
+                Config.DefaultSex = element.Attribute("DefaultSex").Value;
             }
             catch (Exception e)
             {

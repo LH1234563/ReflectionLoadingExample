@@ -36,6 +36,12 @@ public partial class App : Application
             {
                 DataContext = vm
             };
+            
+            // 订阅主窗口的关闭事件
+            desktop.MainWindow.Closed += (sender, args) =>
+            {
+                desktop.Shutdown(); // 关闭应用程序
+            };
             if (Config.ShowScreen)
             {
                 var screen = new MainScreenWindow()

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+    <Module ModuleName="EntryExit" BusinessName="出入境业务" IsShow="true"/>
+    <Module ModuleName="IDCard" BusinessName="身份证业务" IsShow="true"/>
+    <Module ModuleName="TrafficPolice" BusinessName="交警业务" IsShow="true"/>
+    <Module ModuleName="NoCriminalRecord" BusinessName="无犯罪证明记录" IsShow="true"/>
+    <Module ModuleName="SocialSecurity" BusinessName="社保业务" IsShow="true"/>
+    <Config ShowScreen="true" DefaultName="张三" DefaultSex="男"/>
+</Root>

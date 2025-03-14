@@ -1,0 +1,66 @@
+﻿<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    mc:Ignorable="d"
+    x:Class="HomeModule.HomeView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:HomeModule"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:HomeViewModel />
+    </Design.DataContext>
+    <Grid Background="Blue" RowDefinitions="120,*,80">
+        <StackPanel
+            Margin="40,0"
+            Orientation="Horizontal"
+            VerticalAlignment="Center">
+            <TextBlock
+                FontSize="60"
+                Foreground="Black"
+                Text="AAAA派出所" />
+            <TextBlock
+                FontSize="60"
+                Foreground="Black"
+                HorizontalAlignment="Right"
+                Text="123456789" />
+        </StackPanel>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding TypeList}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid
+                        Background="Yellow"
+                        Columns="3"
+                        Margin="3" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button
+                        Command="{Binding $parent[ItemsControl].((vm:HomeViewModel)DataContext).NavigatedToCommand}"
+                        CommandParameter="{Binding type}"
+                        Content="{Binding BusinessName}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Border
+            Background="Red"
+            Grid.Row="2"
+            VerticalAlignment="Center">
+            <TextBlock
+                FontSize="50"
+                FontWeight="Bold"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Text="对党忠诚  服务人民  执法公正  纪律严明" />
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,72 @@
+﻿<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    mc:Ignorable="d"
+    x:Class="ShellModule.ShellView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shellModule="clr-namespace:ShellModule"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <shellModule:ViewModelToTypeConverter x:Key="viewModelToTypeConverter" />
+            <shellModule:IsHomeViewModelToBoolConverter x:Key="isHomeViewModelToBoolConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="MinHeight" Value="80" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="CornflowerBlue" />
+            <Setter Property="Foreground" Value="Cyan" />
+        </Style>
+        <Style Selector="ContentControl">
+            <Setter Property="Margin" Value="0,120,0,80" />
+        </Style>
+        <Style Selector="ContentControl.HomeViewContentMargin">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </UserControl.Styles>
+    <Grid Background="Blue" RowDefinitions="120,*,80">
+        <Border
+            BorderBrush="White"
+            BorderThickness="1"
+            Grid.Row="0"
+            Height="1"
+            VerticalAlignment="Bottom" />
+        <StackPanel
+            Margin="40,0"
+            Orientation="Horizontal"
+            VerticalAlignment="Center">
+            <TextBlock
+                FontSize="60"
+                Foreground="White"
+                Text="AAAA派出所" />
+            <TextBlock
+                FontSize="60"
+                Foreground="White"
+                Margin="50,0,0,0"
+                Text="123456789" />
+        </StackPanel>
+        <Button
+            Command="{Binding HomeCommand}"
+            Content="退出"
+            Grid.Row="2"
+            HorizontalAlignment="Right"
+            Margin="0,0,40,0" />
+        <ContentControl
+            Classes="ContentControl"
+            Classes.HomeViewContentMargin="{Binding CurrentPage, Converter={StaticResource isHomeViewModelToBoolConverter}}"
+            Content="{Binding CurrentPage, Converter={StaticResource viewModelToTypeConverter}}"
+            Grid.RowSpan="3" />
+    </Grid>
+</UserControl>

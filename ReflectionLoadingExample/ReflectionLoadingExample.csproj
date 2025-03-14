@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Models\"/>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0-preview.1.25080.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Modules\ShellModule\ShellModule.csproj"/>
+        <ProjectReference Include="..\Modules\HomeModule\HomeModule.csproj"/>
+<!--        <ProjectReference Include="..\Modules\EntryExitModule\EntryExitModule.csproj"/>-->
+<!--        <ProjectReference Include="..\Modules\IDCardModule\IDCardModule.csproj"/>-->
+<!--        <ProjectReference Include="..\Modules\NoCriminalRecordModule\NoCriminalRecordModule.csproj"/>-->
+<!--        <ProjectReference Include="..\Modules\SocialSecurityModule\SocialSecurityModule.csproj"/>-->
+<!--        <ProjectReference Include="..\Modules\TrafficPoliceModule\TrafficPoliceModule.csproj"/>-->
+        <ProjectReference Include="..\ReflectionLoadingExample.Core\ReflectionLoadingExample.Core.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="MoudlesConfig.xml"/>
+        <Content Include="MoudlesConfig.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+</Project>

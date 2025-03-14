@@ -1,0 +1,18 @@
+﻿<Window
+    Title="MainScreenWindow"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    mc:Ignorable="d"
+    x:Class="ReflectionLoadingExample.Views.MainScreenWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shellModule="clr-namespace:ShellModule;assembly=ShellModule"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Viewbox>
+        <ContentControl
+            Content="{x:Type shellModule:ShellViewModel}"
+            Height="720"
+            Width="1280" />
+    </Viewbox>
+</Window>

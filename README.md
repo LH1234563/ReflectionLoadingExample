@@ -48,5 +48,5 @@
     <Module ModuleName="NoCriminalRecord" BusinessName="无犯罪证明记录" IsShow="true"/>
     <Module ModuleName="SocialSecurity" BusinessName="社保业务" IsShow="true"/>
     <Config ShowScreen="true" DefaultName="张三" DefaultSex="男"/>
-  </Configuration>
+  </Root>
   
